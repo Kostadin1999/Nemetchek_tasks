@@ -1,0 +1,276 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Task1
+{
+    class StudyClass
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+
+        List<Student> students = new List<Student>();
+
+        //List classes = new List();
+        List<string> classes = new List<string>();
+        
+
+        private static Random rnd = new Random(DateTime.Now.Second);
+
+        //private static readonly Random rnd = new Random();
+        //private readonly Random _random = new Random();
+
+        // Generates a random number within a range.      
+        //public int RandomNumber(int min, int max)
+        //{
+        //     return _random.Next(min, max);
+        //}
+
+        /*private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }*/
+
+        public StudyClass()
+        {
+            this.Id = "";
+            this.Name = "";
+
+        }
+        public StudyClass(string Id, string Name, IEnumerable<Student> studentsList)
+        {
+            this.Id = Id;
+            this.Name = Name;
+            students = new List<Student>(studentsList);
+        }
+
+       /* public string RandomString(int size, bool lowerCase = false)
+        {
+            var builder = new StringBuilder(size);
+
+            // Unicode/ASCII Letters are divided into two blocks
+            // (Letters 65–90 / 97–122):   
+            // The first group containing the uppercase letters and
+            // the second group containing the lowercase.  
+
+            // char is a single Unicode character  
+            char offset = lowerCase ? 'a' : 'A';
+            const int lettersOffset = 26; // A...Z or a..z: length = 26  
+
+            for (var i = 0; i < size; i++)
+            {
+                var @char = (char)_random.Next(offset, offset + lettersOffset);
+                builder.Append(@char);
+            }
+
+            return lowerCase ? builder.ToString().ToLower() : builder.ToString();
+        }
+       */
+        
+        public static string teacherName()
+        {
+            string[] names = new string[] { "Mrs. Cholakova", "Mrs. Andreev", "Mr. Rachkov", "Mr. Trifonov", "Mr. Mihalkov" };
+            string tName = names[rnd.Next(0, names.Length - 1)];
+            return tName;
+        }
+
+        public char randomLetter(string s)
+        {
+            //Random random = new Random();
+            //s.ToArray();
+            //char[] visited = new char[6];
+            //char[] arr = "ABCDEF".ToCharArray();
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    for (int j = 0; j < visited.Length; j++)
+            //    {
+            //        if (visited.)
+            //        {
+
+            //        }
+            //    }
+            //}
+            //possible = "ABCDEF".ToList();
+            //int index = rnd.Next(0, possible.Count);
+            //visited.Add(possible[index]);
+            //possible.RemoveAt(index);
+            //return possible[index];
+            int index = rnd.Next(0, s.Length);
+            return s[index];
+            //var chars = "ABCDEF";
+            //var result = new string(
+            //    Enumerable.Repeat(chars, length)
+            //              .Select(s => s[random.Next(s.Length)])
+            //              .ToArray());
+
+            //return result;
+        }
+        public void RandomClasses()
+        {
+            Console.WriteLine("Enter grade: ");
+            char grade = char.Parse(Console.ReadLine());
+            //Random rnd = new Random();
+            int number = 0;
+            while (number <= rnd.Next(4, 6))
+            {
+                char letter = randomLetter("ABCDEF");
+                StringBuilder stringBuilder = new StringBuilder().Append(grade).Append(letter);
+                Id = stringBuilder.ToString();
+                if (classes.Count == 0 && !classes.Contains(Id))
+                {
+                    classes.Add(Id);
+                }
+                //addInList(classes, Id);
+                Name = StudyClass.teacherName();
+               while (students.Count <= rnd.Next(20, 30))
+               {
+                    //Console.WriteLine(Id);
+                    Student student = new Student();
+                    student.FirstName = student.RandFirstName();
+                    student.LastName = student.RandLastName();
+                    student.AverageSuccess = (double)rnd.Next(2, 6);
+                    students.Add(student);
+                   // students.Add(student);
+               }
+                number++;
+                foreach (var item in classes)
+                {
+                    Console.WriteLine($"Class id: {Id}");
+                    Console.WriteLine($"Teacher's name: {Name}");
+                    Console.WriteLine($"Number of students: {students.Count}");
+                }
+                //Console.WriteLine($"Class id: {Id}");
+                //Console.WriteLine($"Teacher's name: {Name}");
+                ////Console.WriteLine($"Success:{}");
+                //Console.WriteLine($"Number of students: {students.Count}");
+                //foreach (var item in classes)
+                //{
+                //    Console.WriteLine(item);
+                //}
+                //Console.WriteLine($"Num of elements in: {classes.Count}");
+               
+                //foreach (var st in students)
+                //{
+                //    Console.WriteLine($"First name: {st.FirstName}");
+                //    Console.WriteLine($"Last name: {st.LastName}");
+                //}
+            }
+
+            //Console.WriteLine(this.ToString());
+            //Console.WriteLine(Id);
+            //foreach (var st in students)
+            //{
+            //    Console.WriteLine($"Name: {st.FirstName}");
+            //    Console.WriteLine($"Last Name: {st.LastName}");
+            //    Console.WriteLine($"Success: {st.AverageSuccess}");
+            //    Console.WriteLine("\n");
+            //}
+            //Console.WriteLine(Id);
+            //char letter = randomLetter("ABCDEF");
+            //StringBuilder stringBuilder = new StringBuilder().Append(grade).Append(letter);
+            //Id = Id + stringBuilder.ToString();
+            //Console.WriteLine(Id);
+            /*while (students.Count <= rnd.Next(20, 30))
+            {
+                Console.WriteLine(Id);
+                Student student = new Student("Elena", "paparizu", 4.07);
+                students.Add(student);
+                foreach (var st in students)
+                {
+                    Console.WriteLine($"Name: {st.FirstName}");
+                    Console.WriteLine($"Last Name: {st.LastName}");
+                    Console.WriteLine("\n");
+                }
+            }*/
+            //Console.WriteLine(Id);
+            //Console.WriteLine(numOfStudents);
+            //number++;
+            //}
+
+            //var IdBuilder = new StringBuilder();
+            //IdBuilder.Append(RandomNumber(1, 12));
+            //IdBuilder.Append(RandomString(1));
+
+            //return IdBuilder.ToString();
+            //string idLetter = rnd.
+        }
+        
+        public void addInList(List<string> students, string value)
+        {
+            for (int i = 0; i < students.Count; i++)
+            {
+                if (students.Count == 0)
+                {
+                    students.Add(value);
+                }
+                else if(value != students[i])
+                {
+                    students.Add(value);
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        public void printAverageSuccess()
+        {
+            //double sum = 0;
+            //for(int i = 0; i < classes.Length; i++)
+            //{
+            //    Console.WriteLine($"The class is: {classes[i]}");
+            //    foreach (var st in students)
+            //    {
+            //        sum += st.AverageSuccess;
+            //    }
+            //    Console.WriteLine($"The average success : {sum / students.Count}");
+            //}
+            int num = 0;
+            double sum = 0;
+            for (int i = 0; i < classes.Count; i++)
+            {
+                foreach (var item in students)
+                {
+                    if (num <= students.Count)
+                    {
+                        sum += item.AverageSuccess;
+                    }
+                    else
+                    {
+                        sum = 0;
+                    }
+                }
+                num++;
+                Console.WriteLine(Id);
+                Console.WriteLine(sum/students.Count);
+            }
+        }
+
+        public void sortByNames()
+        {
+            List<Student> std = students.OrderBy(s => s.FirstName).ToList();
+            printStudents(std);
+        }
+
+        public void sortBySuccess()
+        {
+            List<Student> std = students.OrderBy(s => s.AverageSuccess).ToList();
+            printStudents(std);
+        }
+
+        public void printStudents(List<Student> students)
+        {
+            foreach (var st in students)
+            {
+                Console.WriteLine(st.FirstName);
+                Console.WriteLine(st.LastName);
+                Console.WriteLine(st.AverageSuccess);
+            }
+        }
+    }
+}

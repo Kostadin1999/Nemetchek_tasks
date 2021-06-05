@@ -1,0 +1,6 @@
+D:\koce\Nemetchek\Task1\bin\Debug\Task1.exe.config
+D:\koce\Nemetchek\Task1\bin\Debug\Task1.exe
+D:\koce\Nemetchek\Task1\bin\Debug\Task1.pdb
+D:\koce\Nemetchek\Task1\obj\Debug\Task1.csproj.CoreCompileInputs.cache
+D:\koce\Nemetchek\Task1\obj\Debug\Task1.exe
+D:\koce\Nemetchek\Task1\obj\Debug\Task1.pdb
